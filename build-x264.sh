@@ -21,9 +21,7 @@ git checkout $BRANCH
 make
 VERSION=$(./version.sh | awk -F'[" ]' '/POINT/{print $4"+git"$5}')
 echo "x264 - Nuxeo version" > description-pak
-checkinstall --pkgname=x264-nuxeo --pkgversion="1:$VERSION" \
-    --conflicts=x264 --replaces=x264 --provides=x264 \
-    --maintainer="'Nuxeo Packagers <packagers@nuxeo.com>'" \
-    --backup=no --deldoc=yes --deldesc=yes --fstrans=no --default
+make install
+make distclean
 popd
 
