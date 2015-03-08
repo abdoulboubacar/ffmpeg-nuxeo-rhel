@@ -5,6 +5,7 @@ tar xzvf yasm-1.2.0.tar.gz
 pushd yasm-1.2.0
 ./configure
 make
-sudo checkinstall --pkgname=yasm --pkgversion="1.2.0" --backup=no --deldoc=yes --default
+make install
+make distclean
 popd
 rm yasm-1.2.0.tar.gz
