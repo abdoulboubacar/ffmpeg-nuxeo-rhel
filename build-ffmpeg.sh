@@ -21,9 +21,9 @@ pushd ffmpeg-$RELEASE
 ./configure --enable-gpl --enable-libmp3lame \
     --enable-libtheora --enable-libvorbis \
     --enable-libx264 --enable-libvpx $FAACOPTIONS \
-    --enable-version3 --extra-libs="-ldl"
+    --enable-version3 --enable-pthreads --extra-libs="-ldl"
 
-make
+make -j 2
 echo "ffmpeg - Nuxeo version" > description-pak
 make
 make install
