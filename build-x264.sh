@@ -4,8 +4,6 @@ BRANCH="stable"
 
 if [ -d "x264" ]; then
     pushd x264
-    # Can't pull if is on a detached head 
-    git pull 2>/dev/null || git fetch --all
     git checkout $BRANCH
     if [ -f "Makefile" ]; then
         make distclean || true
