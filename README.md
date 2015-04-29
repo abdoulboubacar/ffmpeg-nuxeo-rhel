@@ -29,3 +29,8 @@ This will compile the following packages:
     BUILD_YASM: If true, then yasm is built from sources, else its package is installed if not already present.
     BUILD_LIBFAAC: Whether to include AAC support (i.e. compile 'ffmpeg' with "--enable-libfaac --enable-nonfree" options).
     If true, then the package 'libfaac' will be compiled from sources.
+    
+Thanks goes to the following references:
+
+ - https://github.com/nuxeo/ffmpeg-nuxeo$
+ - https://trac.ffmpeg.org/wiki/CompilationGuide/Centos
