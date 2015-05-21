@@ -8,6 +8,9 @@ BUILD_YASM=${BUILD_YASM:-"false"}
 export LIBFAAC
 export BUILD_YASM
 
+echo "export PATH=$PATH:/usr/local/bin" >> /etc/environment
+. /etc/environment
+
 ./prepare-packages.sh
 if [ "$BUILD_YASM" = "true" ]; then
     ./build-yasm.sh
