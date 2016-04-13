@@ -7,7 +7,7 @@ if [ -d "libvpx" ]; then
     if [ -f "Makefile" ]; then
         make clean || true
     fi
-    git checkout master
+    #git checkout master
     git pull
     popd
 else
