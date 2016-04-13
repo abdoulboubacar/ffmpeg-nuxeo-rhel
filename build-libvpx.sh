@@ -18,8 +18,8 @@ fi
 
 pushd libvpx
 git checkout $TAG
-./configure
-make
+#./configure
+#make
 MAJOR=$(grep '#define VERSION_MAJOR' vpx_version.h | awk '{print $3}')
 MINOR=$(grep '#define VERSION_MINOR' vpx_version.h | awk '{print $3}')
 PATCH=$(grep '#define VERSION_PATCH' vpx_version.h | awk '{print $3}')
