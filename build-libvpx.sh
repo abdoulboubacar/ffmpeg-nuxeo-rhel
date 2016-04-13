@@ -1,17 +1,19 @@
 #!/bin/bash -e
 
-TAG="v1.0.0"
+# TAG="v1.0.0"
+TAG="master"
 
 if [ -d "libvpx" ]; then
     pushd libvpx
     if [ -f "Makefile" ]; then
         make clean || true
     fi
-    #git checkout master
+    git checkout master
     git pull
     popd
 else
-    git clone http://git.chromium.org/webm/libvpx.git
+    # git clone http://git.chromium.org/webm/libvpx.git
+    git clone https://chromium.googlesource.com/chromium/deps/libvpx
 fi
 
 pushd libvpx
