@@ -1,6 +1,5 @@
 #!/bin/bash -e
 
-# TAG="v1.0.0"
 TAG="master"
 
 if [ -d "libvpx" ]; then
@@ -12,13 +11,12 @@ if [ -d "libvpx" ]; then
     git pull
     popd
 else
-    # git clone http://git.chromium.org/webm/libvpx.git
     git clone https://chromium.googlesource.com/chromium/deps/libvpx
 fi
 
 pushd libvpx/source/libvpx/
 git checkout $TAG
-./configure
+./configure --prefix="$FFMPEG_BUILD" --disable-examples
 make
 MAJOR=$(grep '#define VERSION_MAJOR' vpx_version.h | awk '{print $3}')
 MINOR=$(grep '#define VERSION_MINOR' vpx_version.h | awk '{print $3}')
@@ -29,4 +27,3 @@ make
 make install
 make clean
 popd
-

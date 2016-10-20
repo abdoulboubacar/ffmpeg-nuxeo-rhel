@@ -15,7 +15,7 @@ else
 fi
 
 pushd libvorbis-$RELEASE
-./configure --disable-shared
+./configure --prefix="$FFMPEG_BUILD" --with-ogg="$FFMPEG_BUILD" --disable-shared
 make
 make install
 make distclean

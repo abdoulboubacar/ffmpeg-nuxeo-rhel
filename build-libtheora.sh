@@ -15,7 +15,7 @@ else
 fi
 
 pushd libtheora-$RELEASE
-./configure --disable-examples --disable-shared --disable-sdltest --disable-vorbistest
+./configure --prefix="$FFMPEG_BUILD" --with-ogg="$FFMPEG_BUILD" --disable-examples --disable-shared --disable-sdltest --disable-vorbistest
 make
 make install
 make distclean

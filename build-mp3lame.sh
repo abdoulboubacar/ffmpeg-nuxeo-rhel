@@ -16,7 +16,7 @@ else
 fi
 
 pushd lame-3.99.5
-./configure --disable-shared --enable-nasm
+./configure --prefix="$FFMPEG_BUILD" --bindir="$BIN_DIR" --disable-shared --enable-nasm
 make
 make install
 make distclean

@@ -2,10 +2,6 @@
 
 RELEASE="1.1.9"
 
-if [ "$BUILD_LIBFAAC" = "true" ]; then
-    FAACOPTIONS="--enable-libfaac --enable-nonfree"
-fi
-
 if [ -d "ffmpeg-$RELEASE" ]; then
     pushd ffmpeg-$RELEASE
     if [ -f "Makefile" ]; then
@@ -13,21 +9,22 @@ if [ -d "ffmpeg-$RELEASE" ]; then
     fi
     popd
 else
-    wget http://www.ffmpeg.org/releases/ffmpeg-$RELEASE.tar.bz2
+    curl -L -O http://www.ffmpeg.org/releases/ffmpeg-$RELEASE.tar.bz2
     tar xjf ffmpeg-$RELEASE.tar.bz2
+    rm ffmpeg-$RELEASE.tar.bz2
 fi
 
 pushd ffmpeg-$RELEASE
-./configure --enable-gpl --enable-libmp3lame \
+PKG_CONFIG_PATH="$FFMPEG_BUILD/lib/pkgconfig" ./configure --prefix="$FFMPEG_BUILD" --extra-cflags="-I$FFMPEG_BUILD/include" \
+    --extra-ldflags="-L$FFMPEG_BUILD/lib" --bindir="$BIN_DIR" \
+    --enable-gpl --enable-libmp3lame \
     --enable-libtheora --enable-libvorbis \
-    --enable-libx264 --enable-libvpx $FAACOPTIONS \
-    --enable-version3 --enable-pthreads --extra-libs="-ldl" \
-    --disable-ffplay --disable-ffserver
-
+    --enable-libx264 --enable-libvpx --enable-libfaac --enable-nonfree \
+    --enable-version3 --extra-libs="-ldl"
 make -j 2
-echo "ffmpeg - Nuxeo version" > description-pak
-make
 make install
 make distclean
+hash -r
 popd
 
+rm -rf ffmpeg-$RELEASE

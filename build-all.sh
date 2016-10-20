@@ -1,28 +1,23 @@
 #!/bin/bash -e
 
+export BIN_DIR=/usr/bin
+export FFMPEG_BUILD=/home1/nuxeo-ffmpeg
+export PATH=$PATH:$BIN_DIR
+
 cd $(dirname "$0")
 
-BUILD_LIBFAAC=${BUILD_LIBFAAC:-"false"}
-BUILD_YASM=${BUILD_YASM:-"false"}
+yum -y install gcc tar unzip git autoconf automake gcc-c++ libtool make nasm pkgconfig zlib-devel bzip2
+yum -y install java-1.8.0-openjdk libreoffice libreoffice-headless poppler-utils texi2html dcraw freetype-devel libwpd-tools ghostscript
+yum -y install ImageMagick ImageMagick-devel
 
-export LIBFAAC=true
-export BUILD_YASM=true
-
-echo "export PATH=$PATH:/usr/local/bin" >> /etc/environment
-. /etc/environment
-
-./prepare-packages.sh
-if [ "$BUILD_YASM" = "true" ]; then
-    ./build-yasm.sh
-fi
-if [ "$BUILD_LIBFAAC" = "true" ]; then
-    ./build-faac.sh
-fi
+./build-yasm.sh
 ./build-x264.sh
 ./build-libvpx.sh
-./build-ogg.sh
-./build-vorbis.sh
-./build-libtheora.sh
 ./build-mp3lame.sh
+./build-ogg.sh
+./build-libtheora.sh
+./build-vorbis.sh
+./build-faad.sh
+./build-faac.sh
 ./build-ffmpeg.sh
 
