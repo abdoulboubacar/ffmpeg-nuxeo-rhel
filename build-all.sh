@@ -5,8 +5,8 @@ cd $(dirname "$0")
 BUILD_LIBFAAC=${BUILD_LIBFAAC:-"false"}
 BUILD_YASM=${BUILD_YASM:-"false"}
 
-export LIBFAAC
-export BUILD_YASM
+export LIBFAAC=true
+export BUILD_YASM=true
 
 echo "export PATH=$PATH:/usr/local/bin" >> /etc/environment
 . /etc/environment
