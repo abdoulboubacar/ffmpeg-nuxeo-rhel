@@ -9,7 +9,7 @@ if [ -d "libogg-$RELEASE" ]; then
     fi
     popd
 else
-  curl -O http://downloads.xiph.org/releases/ogg/libogg-$RELEASE.tar.gz
+  curl -L -O http://downloads.xiph.org/releases/ogg/libogg-$RELEASE.tar.gz
   tar xzvf libogg-$RELEASE.tar.gz
   rm libogg-$RELEASE.tar.gz
 fi

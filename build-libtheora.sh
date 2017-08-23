@@ -9,7 +9,7 @@ if [ -d "libtheora-$RELEASE" ]; then
     fi
     popd
 else
-  curl -O http://downloads.xiph.org/releases/theora/libtheora-$RELEASE.tar.gz
+  curl -L -O http://downloads.xiph.org/releases/theora/libtheora-$RELEASE.tar.gz
   tar xzvf libtheora-$RELEASE.tar.gz
   rm libtheora-$RELEASE.tar.gz
 fi

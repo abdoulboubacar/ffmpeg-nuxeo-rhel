@@ -9,7 +9,7 @@ if [ -d "libvorbis-$RELEASE" ]; then
     fi
     popd
 else
-  curl -O http://downloads.xiph.org/releases/vorbis/libvorbis-$RELEASE.tar.gz
+  curl -L -O http://downloads.xiph.org/releases/vorbis/libvorbis-$RELEASE.tar.gz
   tar xzvf libvorbis-$RELEASE.tar.gz
   rm libvorbis-$RELEASE.tar.gz
 fi

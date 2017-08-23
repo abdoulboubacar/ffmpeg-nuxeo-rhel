@@ -14,7 +14,6 @@ pushd x265/build/linux
 cmake -G "Unix Makefiles" -DCMAKE_INSTALL_PREFIX="$FFMPEG_BUILD" -DENABLE_SHARED:bool=off ../../source
 make
 make install
-make distclean
 
 popd
 

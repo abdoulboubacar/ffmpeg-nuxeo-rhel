@@ -24,11 +24,13 @@ PKG_CONFIG_PATH="$FFMPEG_BUILD/lib/pkgconfig" ./configure --prefix="$FFMPEG_BUIL
     --enable-libopus \
     --enable-libvorbis \
     --enable-libtheora \
-    --enable-libfaac \
     --enable-libvpx \
     --enable-libx264 \
     --enable-libx265 \
     --enable-nonfree 
+
+#--enable-libfaac # deprecated
+
 make -j 2
 make install
 make distclean
