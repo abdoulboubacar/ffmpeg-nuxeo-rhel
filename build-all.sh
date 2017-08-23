@@ -6,7 +6,7 @@ export PATH=$PATH:$BIN_DIR
 
 cd $(dirname "$0")
 
-yum -y install unzip tar autoconf automake bzip2 cmake freetype-devel nasme gcc gcc-c++ git libtool make mercurial pkgconfig zlib-devel
+yum -y install unzip tar autoconf automake bzip2 cmake freetype-devel gcc gcc-c++ git libtool nasm make mercurial pkgconfig zlib-devel
 yum -y install poppler-utils texi2html dcraw freetype-devel libwpd-tools ghostscript
 yum -y install ImageMagick ImageMagick-devel
 
