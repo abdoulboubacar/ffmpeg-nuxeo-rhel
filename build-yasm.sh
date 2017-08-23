@@ -1,6 +1,6 @@
 #!/bin/bash -e
 
-RELEASE=1.2.0
+RELEASE=1.3.0
 
 if [ -d "yasm-$RELEASE" ]; then
     pushd yasm-$RELEASE

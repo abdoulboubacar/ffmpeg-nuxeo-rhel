@@ -1,29 +1,21 @@
 #!/bin/bash -e
 
-TAG="master"
-
 if [ -d "libvpx" ]; then
     pushd libvpx
     if [ -f "Makefile" ]; then
         make clean || true
     fi
-    git checkout master
-    git pull
     popd
 else
-    git clone https://chromium.googlesource.com/chromium/deps/libvpx
+    git clone --depth 1 https://chromium.googlesource.com/webm/libvpx.git
 fi
 
-pushd libvpx/source/libvpx/
-git checkout $TAG
-./configure --prefix="$FFMPEG_BUILD" --disable-examples
-make
-MAJOR=$(grep '#define VERSION_MAJOR' vpx_version.h | awk '{print $3}')
-MINOR=$(grep '#define VERSION_MINOR' vpx_version.h | awk '{print $3}')
-PATCH=$(grep '#define VERSION_PATCH' vpx_version.h | awk '{print $3}')
-VERSION="$MAJOR.$MINOR.$PATCH"
-echo "libvpx - Nuxeo version" > description-pak
+pushd libvpx
+./configure --prefix="$FFMPEG_BUILD" --disable-examples --disable-unit-tests --enable-vp9-highbitdepth --as=yasm
 make
 make install
 make clean
+
 popd
+
+rm -rf libvpx

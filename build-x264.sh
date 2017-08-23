@@ -1,6 +1,6 @@
 #!/bin/bash -e
 
-BRANCH="stable"
+BRANCH="master"
 
 if [ -d "x264" ]; then
     pushd x264
@@ -10,12 +10,13 @@ if [ -d "x264" ]; then
     fi
     popd
 else
-    git clone https://git.videolan.org/git/x264.git
+    git clone --depth 1 http://git.videolan.org/git/x264
 fi
 
 pushd x264
 git checkout $BRANCH
-./configure --enable-static --disable-asm
+PKG_CONFIG_PATH="$FFMPEG_BUILD/lib/pkgconfig"
+./configure --prefix="$FFMPEG_BUILD" --bindir="$BIN_DIR" --enable-static
 make
 VERSION=$(./version.sh | awk -F'[" ]' '/POINT/{print $4"+git"$5}')
 echo "x264 - Nuxeo version" > description-pak
