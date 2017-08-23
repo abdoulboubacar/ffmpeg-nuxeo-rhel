@@ -16,7 +16,7 @@ fi
 pushd x264
 git checkout $BRANCH
 PKG_CONFIG_PATH="$FFMPEG_BUILD/lib/pkgconfig"
-./configure --prefix="$FFMPEG_BUILD" --bindir="$BIN_DIR" --enable-static
+./configure --prefix="$FFMPEG_BUILD" --bindir="$BIN_DIR" --enable-static --disable-asm
 make
 VERSION=$(./version.sh | awk -F'[" ]' '/POINT/{print $4"+git"$5}')
 echo "x264 - Nuxeo version" > description-pak

@@ -11,7 +11,7 @@ yum -y install poppler-utils texi2html dcraw freetype-devel libwpd-tools ghostsc
 yum -y install ImageMagick ImageMagick-devel
 
 ./build-yasm.sh
-#./build-x264.sh
+./build-x264.sh
 ./build-x265.sh
 ./build-libfdk_aac.sh
 ./build-mp3lame.sh
