@@ -1,7 +1,7 @@
 #!/bin/bash -e
 
 export BIN_DIR=/usr/bin
-export FFMPEG_BUILD=/home1/nuxeo-ffmpeg
+export FFMPEG_BUILD=/usr/share/nuxeo-ffmpeg
 export PATH=$PATH:$BIN_DIR
 
 cd $(dirname "$0")
